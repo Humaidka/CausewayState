@@ -43,6 +43,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>war/WEB-INF/cron.xml</name>
+			<type>1</type>
+			<location>C:/Users/khaled/workspace/CausewayState/war/WEB-INF/cron.xml</location>
+		</link>
+		<link>
 			<name>src/com/parisofnajd/causewaystate/AccessTokenEntity.java</name>
 			<type>1</type>
 			<location>C:/Users/khaled/workspace/CausewayState/src/com/parisofnajd/causewaystate/AccessTokenEntity.java</location>
