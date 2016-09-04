@@ -1,5 +1,8 @@
 package com.parisofnajd.causewaystate;
 
+import java.util.Date;
+import 
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -11,15 +14,16 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 public class AccessTokenEntity {
 
-	public static void persist(long userid,String screenname, String token, String secret) {
+	public static void persist(Date date,Date time,Date tt) {
 	
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 	
-		Entity at = new Entity("AccessTokens",userid);
-		at.setProperty("UserID", userid);
-		at.setProperty("ScreenName", screenname);
-		at.setProperty("Token", token);
-		at.setProperty("Secret", secret);
+		Entity at = new Entity("TravelTime");
+		at.setProperty("From", "KSA");
+		at.setProperty("To", "BHR");
+		at.setProperty("Date", date);
+		at.setProperty("Time", time);
+		at.setProperty("TT", tt);
 		ds.put(at);
 
 	}
@@ -40,7 +44,7 @@ public class AccessTokenEntity {
 public static String fetchAccessTokenSecret(long userid) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-		Key k = KeyFactory.createKey("AccessTokens", userid);
+		Key k = KeyFactory.createKey("TravelTime");
 		Entity accesstoken=null;
 		try {
 			accesstoken=ds.get(k);
@@ -50,3 +54,4 @@ public static String fetchAccessTokenSecret(long userid) {
 		return accesstoken.getProperty("Secret").toString();
 	}
 }
+ 
