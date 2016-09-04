@@ -47,5 +47,10 @@
 			<type>1</type>
 			<location>C:/Users/khaled/workspace/CausewayState/war/WEB-INF/cron.xml</location>
 		</link>
+		<link>
+			<name>src/com/google/gson</name>
+			<type>2</type>
+			<location>C:/Users/khaled/workspace/CausewayState/src/com/google/gson</location>
+		</link>
 	</linkedResources>
 </projectDescription>
