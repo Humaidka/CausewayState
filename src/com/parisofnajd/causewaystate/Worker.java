@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import com.google.maps.DirectionsApi; 
 import com.google.maps.GeoApiContext;
 import com.google.maps.DirectionsApi.RouteRestriction;
+import com.google.maps.GaeRequestHandler;
 import com.google.maps.errors.NotFoundException;
 import com.google.maps.model.AddressType;
 import com.google.maps.model.DirectionsResult;
@@ -31,7 +32,7 @@ import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("serial")
 public class Worker extends HttpServlet {
-	private GeoApiContext context = new GeoApiContext();
+	private GeoApiContext context = new GeoApiContext(new GaeRequestHandler());
 	private static final Logger log = Logger.getLogger(Worker.class.getName());
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		DirectionsResult result = null;
@@ -48,8 +49,8 @@ public class Worker extends HttpServlet {
 	private DirectionsResult testKSA2BHR() throws Exception {
 		context.setApiKey("AIzaSyAo0AI9Ym9NUweWLrq9uluGMpHmsyvLUrU");
 		DirectionsResult result = DirectionsApi.newRequest(context)
-	        .origin("Khobar, Saudi Arabia")
-	        .destination("Bahrain").await();
+	        .origin("New York")
+	        .destination("Boston").await();
 
 	    assertNotNull(result.routes);
 	    return result;

@@ -47,25 +47,5 @@
 			<type>1</type>
 			<location>C:/Users/khaled/workspace/CausewayState/war/WEB-INF/cron.xml</location>
 		</link>
-		<link>
-			<name>war/WEB-INF/lib/com.google.gson.jar</name>
-			<type>1</type>
-			<location>C:/Users/khaled/workspace/CausewayState/war/WEB-INF/lib/com.google.gson.jar</location>
-		</link>
-		<link>
-			<name>war/WEB-INF/lib/com.google.maps.jar</name>
-			<type>1</type>
-			<location>C:/Users/khaled/workspace/CausewayState/war/WEB-INF/lib/com.google.maps.jar</location>
-		</link>
-		<link>
-			<name>war/WEB-INF/lib/joda-time-2.9.4.jar</name>
-			<type>1</type>
-			<location>C:/Users/khaled/workspace/CausewayState/war/WEB-INF/lib/joda-time-2.9.4.jar</location>
-		</link>
-		<link>
-			<name>war/WEB-INF/lib/okhttp-2.7.5.jar</name>
-			<type>1</type>
-			<location>C:/Users/khaled/workspace/CausewayState/war/WEB-INF/lib/okhttp-2.7.5.jar</location>
-		</link>
 	</linkedResources>
 </projectDescription>
