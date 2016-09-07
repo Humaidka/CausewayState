@@ -59,8 +59,6 @@ public class Worker extends HttpServlet {
 		DirectionsResult result = DirectionsApi.newRequest(context)
 	        .origin("New York")
 	        .destination("Boston").await();
-
-	    assertNotNull(result.routes);
 	    return result;
 	}
 	
