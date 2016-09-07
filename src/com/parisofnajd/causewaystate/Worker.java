@@ -10,8 +10,11 @@ import com.google.maps.DirectionsApi.RouteRestriction;
 import com.google.maps.GaeRequestHandler;
 import com.google.maps.errors.NotFoundException;
 import com.google.maps.model.AddressType;
+import com.google.maps.model.DirectionsLeg;
 import com.google.maps.model.DirectionsResult;
+import com.google.maps.model.DirectionsRoute;
 import com.google.maps.model.GeocodedWaypointStatus;
+import com.google.maps.model.LatLng;
 import com.google.maps.model.TrafficModel;
 import com.google.maps.model.TransitMode;
 import com.google.maps.model.TransitRoutingPreference;
@@ -36,30 +39,37 @@ public class Worker extends HttpServlet {
 	private static final Logger log = Logger.getLogger(Worker.class.getName());
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		DirectionsResult result = null;
+		context.setApiKey("AIzaSyAo0AI9Ym9NUweWLrq9uluGMpHmsyvLUrU");
 		
 		try {
-			context.setApiKey("AIzaSyAo0AI9Ym9NUweWLrq9uluGMpHmsyvLUrU");
+			KSA2BHR();
+			BHR2KSA();
 			
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			result = testKSA2BHR();
 		} catch (Exception e) {
 			//TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		resp.getWriter().println(result.toString());
 	}
 	
-	private DirectionsResult testKSA2BHR() throws Exception {
-		context.setApiKey("AIzaSyAo0AI9Ym9NUweWLrq9uluGMpHmsyvLUrU");
+	private void KSA2BHR() throws Exception {
+		DateTime date = new DateTime();
+		LatLng origin = new LatLng(26.218625, 50.206226);
+		LatLng dest = new LatLng(26.172190,50.458094);
 		DirectionsResult result = DirectionsApi.newRequest(context)
-	        .origin("New York")
-	        .destination("Boston").await();
-	    return result;
+	        .origin(origin)
+	        .destination(dest).await();
+		 TravelTimeEntity.persist("BHR", "KSA", date, result.routes[0].legs[0].duration.humanReadable,result.routes[0].legs[0].duration.inSeconds);			    
+	}
+	
+	private void BHR2KSA() throws Exception {
+		DateTime date = new DateTime();
+		LatLng origin = new LatLng(26.172396,50.459185);
+		LatLng dest = new LatLng(26.219009,50.208105);
+		DirectionsResult result = DirectionsApi.newRequest(context)
+	        .origin(origin)
+	        .destination(dest).await();
+	    TravelTimeEntity.persist("BHR", "KSA", date, result.routes[0].legs[0].duration.humanReadable,result.routes[0].legs[0].duration.inSeconds);
 	}
 	
 }
