@@ -59,7 +59,7 @@ public class Worker extends HttpServlet {
 		DirectionsResult result = DirectionsApi.newRequest(context)
 	        .origin(origin)
 	        .destination(dest).await();
-		 TravelTimeEntity.persist("BHR", "KSA", date, result.routes[0].legs[0].duration.humanReadable,result.routes[0].legs[0].duration.inSeconds);			    
+		 TravelTimeEntity.persist("KSA", "BHR", date, result.routes[0].legs[0].duration.humanReadable,result.routes[0].legs[0].duration.inSeconds);			    
 	}
 	
 	private void BHR2KSA() throws Exception {
