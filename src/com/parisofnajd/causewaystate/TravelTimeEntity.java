@@ -21,7 +21,7 @@ public class TravelTimeEntity {
 		Entity at = new Entity("TravelTime");
 		at.setProperty("From", origin);
 		at.setProperty("To", dest);
-		at.setProperty("DateTime", date.toDateTime(arg0));
+		at.setProperty("DateTime", date.toString());
 		at.setProperty("Duration text",duration_in_text);
 		at.setProperty("Duration text",duration_in_seconds);
 		ds.put(at);
