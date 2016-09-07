@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 import com.google.maps.DirectionsApi; 
 import com.google.maps.GeoApiContext;
 import com.google.maps.DirectionsApi.RouteRestriction;
-import com.google.maps.DirectionsApiTest;
 import com.google.maps.GaeRequestHandler;
 import com.google.maps.errors.NotFoundException;
 import com.google.maps.model.AddressType;
@@ -36,23 +35,23 @@ public class Worker extends HttpServlet {
 	private GeoApiContext context = new GeoApiContext(new GaeRequestHandler());
 	private static final Logger log = Logger.getLogger(Worker.class.getName());
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		//DirectionsResult result = null;
+		DirectionsResult result = null;
 		
 		try {
 			context.setApiKey("AIzaSyAo0AI9Ym9NUweWLrq9uluGMpHmsyvLUrU");
-			new DirectionsApiTest(context).testGetDirections();
+			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//try {
-			//result = testKSA2BHR();
-		//} catch (Exception e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//}
+		try {
+			result = testKSA2BHR();
+		} catch (Exception e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		//resp.getWriter().println(result.toString());
+		resp.getWriter().println(result.toString());
 	}
 	
 	private DirectionsResult testKSA2BHR() throws Exception {
