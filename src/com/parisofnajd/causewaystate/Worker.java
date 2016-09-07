@@ -53,7 +53,7 @@ public class Worker extends HttpServlet {
 	}
 	
 	private void KSA2BHR() throws Exception {
-		DateTime date = new DateTime();
+		DateTime date = new DateTime("Asia/Riyadh");
 		LatLng origin = new LatLng(26.218625, 50.206226);
 		LatLng dest = new LatLng(26.172190,50.458094);
 		DirectionsResult result = DirectionsApi.newRequest(context)
@@ -63,7 +63,7 @@ public class Worker extends HttpServlet {
 	}
 	
 	private void BHR2KSA() throws Exception {
-		DateTime date = new DateTime();
+		DateTime date = new DateTime("Asia/Riyadh");
 		LatLng origin = new LatLng(26.172396,50.459185);
 		LatLng dest = new LatLng(26.219009,50.208105);
 		DirectionsResult result = DirectionsApi.newRequest(context)
